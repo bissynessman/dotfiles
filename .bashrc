@@ -16,10 +16,6 @@ fi
 
 
 # Put your fun stuff here.
-if [[ ":$PATH:" != *":$HOME/path_entries:"* ]]; then
-	export PATH="$PATH:$HOME/path_entries"
-fi
-
 if [ -n "$DISPLAY" ]; then
 	eval "$(starship init bash)"
 fi
