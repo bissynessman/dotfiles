@@ -172,7 +172,7 @@
 	},
 
 	"custom/spotify": {
-		"exec": "python3 /home/tim/.config/waybar/modules/mediaplayer.py --player spotify",
+		"exec": "python3 ~/.config/waybar/modules/mediaplayer.py --player spotify",
 		"format": " {}",
 		"return-type": "json",
 		"on-click": "playerctl play-pause",
