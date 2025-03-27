@@ -16,12 +16,8 @@ fi
 
 
 # Put your fun stuff here.
-if [[ ":$PATH:" != *":/home/tim/path_entries:"* ]]; then
-	export PATH="$PATH:/home/tim/path_entries"
-fi
-
-if [[ ":$PATH:" != *":/home/tim/.spicetify:"* ]]; then
-	export PATH="$PATH:/home/tim/.spicetify"
+if [[ ":$PATH:" != *":$HOME/path_entries:"* ]]; then
+	export PATH="$PATH:$HOME/path_entries"
 fi
 
 if [ -n "$DISPLAY" ]; then
