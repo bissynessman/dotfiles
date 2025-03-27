@@ -1,0 +1,103 @@
+* {
+    bg-col:  #292c3c;
+    bg-col-light: #303446;
+    border-col: #232634;
+    selected-col: #ca9ee6;
+    rosewater: #f2d5cf;
+    fg-col: #c6d0f5;
+    fg-col2: #a5adce;
+    grey: #737994;
+
+    font: "IntoneMono Nerd Font Mono 14";
+}
+
+window {
+	location: east;
+	anchor: east;
+	width: 125;
+	x-offset: -25px;
+	background-color: @bg-col;
+	border: 5px solid;
+	border-radius: 22;
+	border-color: @rosewater;
+}
+
+mainbox {
+	spacing: 15px;
+	padding: 15px;
+	background-color: transparent;
+	children: ["listview"];
+}
+
+listview {
+	columns: 1;
+	lines: 3;
+	cycle: false;
+	dynamic: true;
+	scrollbar: false;
+	layout: vertical;
+	spacing: 15px;
+	background-color: transparent;
+	border: 0px solid;
+}
+
+element {
+	background-color: inherit;
+	text-color: @fg-col;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+element-text {
+	background-color: inherit;
+	text-color: inherit;
+	font: "IntoneMono Nerd Font Mono 35";
+	align-items: center;
+	vertical-align: 0.5;
+	horizontal-align: 0.5;
+}
+
+element.normal.normal {
+	background-color: transparent;
+	text-color: @fg-col;
+}
+
+element.normal.urgent {
+	background-color: transparent;
+	text-color: @fg-col;
+}
+
+element.normal.active {
+	background-color: transparent;
+	text-color: @fg-col;
+}
+
+element.selected.normal {
+	background-color: @rosewater;
+	text-color: @bg-col;
+}
+
+element.selected.urgent {
+	background-color: @rosewater;
+	text-color: @bg-col;
+}
+
+element.selected.active {
+	background-color: @rosewater;
+	text-color: @bg-col;
+}
+
+element.alternate.normal {
+	background-color: transparent;
+	text-color: @fg-col;
+}
+
+element.alternate.urgent {
+	background-color: transparent;
+	text-color: @fg-col;
+}
+
+element.alternate.active {
+	background-color: transparent;
+	text-color: @fg-col;
+}

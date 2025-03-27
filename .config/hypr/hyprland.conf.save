@@ -1,0 +1,82 @@
+
+# Globals
+$mainMod = SUPER
+$terminal = kitty
+$filemanager = dolphin
+
+# Monitor
+monitor = eDP-1, 2560x1440@165.00301, 0x0, 1
+
+# Workspaces
+workspace = 1, monitor:"main"
+workspace = 2, monitor:"main"
+workspace = 3, monitor:"main"
+workspace = 4, monitor:"main"
+
+# Keybinds
+# Media control
+bind = , XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +2%
+bind = , XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -2%
+bind = , XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle
+bind = , XF86AudioMicMute, exec, pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bind = , XF86AudioPlay, exec, playerctl play-pause
+bind = , XF86AudioNext, exec, playerctl next
+bind = , XF86AudioPrev, exec, playerctl previous
+bind = , XF86AudioStop, exec, playerctl stop
+bind = $mainMod, PRINT, exec, hyprshot -m window
+bind = , PRINT, exec, hyprshot -m output
+# Window control
+bind = $mainMod, Q, exec, $terminal
+bind = $mainMod, C, killactive
+bind = $mainMod, M, exit
+bind = $mainMod, Z, exec, zen
+bind = $mainMod, D, exec, discord
+bind = $mainMod, V, togglefloating,
+bind = $mainMod, P, pseudo,
+bind = $mainMod, J, togglesplit,
+bindm = $mainMod, mouse:272, movewindow
+# Workspace control
+bind = $mainMod, 1, movetoworkspace, 1
+bind = $mainMod, 2, movetoworkspace, 2
+bind = $mainMod, 3, movetoworkspace, 3
+bind = $mainMod, 4, movetoworkspace, 4
+bind = ALT, TAB, workspace, m+1
+
+# Environment variables
+env = WLR_NO_HARDWARE_CURSORS, 1
+env = WLR_USE_EGL, 1
+env = WLR_DRM_NO_ATOMIC, 1
+env = LIBVA_DRIVER_NAME, nvidia
+env = GBM_BACKEND, nvidia-drm
+env = __GLX_VENDOR_LIBRARY_NAME, nvidia
+env = HYPRSHOT_DIR, /home/tim/screenshots
+
+# A E S T H E T I C
+decoration {
+	dim_special = .3
+	active_opacity = 1
+	inactive_opacity = .8
+	blur {
+		special = true
+	}
+}
+dwindle {
+	pseudotile = true
+	preserve_split = true
+}
+
+# Varibales
+input {
+	touchpad {
+		natural_scroll = true
+		scroll_factor = .1
+	}
+}
+
+# Logging
+debug:disable_logs = false
+
+# Executions
+exec = lxqt-policykit-agent
+exec-once = waybar
+#exec-once = hyprctl setcursor

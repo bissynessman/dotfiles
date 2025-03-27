@@ -1,0 +1,320 @@
+/* Keyframes */
+
+@keyframes blink-critical {
+	to {
+		color: @white;
+		background-color: @critical;
+	}
+}
+
+
+/* Styles */
+
+/* Colors (gruvbox) */
+@define-color black	#282828;
+@define-color purple	#b16286;
+@define-color yellow	#bf9d02;
+@define-color braqua	#8ec07c;
+@define-color white	#ebdbb2;
+
+/* Colors (catppuccin) */
+@define-color rosewater #f2d5cf;
+@define-color flamingo #eebebe;
+@define-color mauve #ca9ee6;
+@define-color red #e78284;
+@define-color peach #ef9f76;
+@define-color green #a6d189;
+@define-color teal #81c8be;
+@define-color lavender #babbf1;
+
+/* Color variables */
+@define-color warning 	@yellow;
+@define-color critical	@red;
+@define-color mode	@black;
+@define-color unfocused	@lavender;
+@define-color focused	@braqua;
+@define-color inactive	@purple;
+@define-color sound	@red;
+@define-color network	@peach;
+@define-color memory	@flamingo;
+@define-color cpu	@rosewater;
+@define-color temp	@lavender;
+@define-color battery	@mauve;
+@define-color tray @teal;
+@define-color date	@white;
+@define-color time	@black;
+@define-color text @black;
+
+/* Reset all styles */
+* {
+	border: none;
+	border-radius: 0;
+	min-height: 0;
+	margin: 0;
+	padding: 0;
+	box-shadow: none;
+	text-shadow: none;
+	-gtk-icon-shadow: none;
+}
+
+/* The whole bar */
+#waybar {
+	background: rgba(40, 40, 40, 0.75); /* #282828e0 */
+	color: @white;
+	font-family: IntoneMono Nerd Font, Mono;  /*JetBrains Mono, Siji;*/
+	font-size: 24px;
+	min-height: 24px;
+}
+
+/* Each module */
+#battery,
+#clock,
+#cpu,
+#language,
+#memory,
+#mode,
+#network,
+#pulseaudio,
+#temperature,
+#tray,
+#backlight,
+#idle_inhibitor,
+#disk,
+#user,
+#mpris {
+	padding-left: 8pt;
+	padding-right: 8pt;
+}
+
+/* Each critical module */
+#mode,
+#memory.critical,
+#cpu.critical,
+#temperature.critical,
+#battery.critical.discharging {
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-name: blink-critical;
+	animation-duration: 1s;
+}
+
+/* Each warning */
+#network.disconnected,
+#memory.warning,
+#cpu.warning,
+#temperature.warning,
+#battery.warning.discharging {
+	color: @warning;
+}
+
+/* Modules in their respective order */
+
+/* Current sway mode (resize etc) */
+#mode {
+	color: @white;
+	background: @mode;
+}
+
+/* Workspaces stuff */
+#workspaces button {
+	padding-left: 0;
+	padding-right: 4pt;
+	color: @black;
+	background: @unfocused;
+}
+
+/* Inactive (on unfocused output) */
+#workspaces button.visible {
+	color: @white;
+	background: @inactive;
+}
+
+/* Active (on focused output) */
+#workspaces button.focused {
+	color: @black;
+	background: @focused;
+}
+
+/* Contains an urgent window */
+#workspaces button.urgent {
+	color: @black;
+	background: @warning;
+}
+
+/* Style when cursor is on the button */
+#workspaces button:hover {
+	background: @black;
+	color: @white;
+}
+
+/* Floating / adjust margins and font size to fit */
+#custom-window-icon {
+	font-size: 17px;
+	margin-top: 3px;
+	margin-bottom: 4px;
+	padding-right: 8px;
+	background: @lavender;
+	color: @black;
+}
+
+#window {
+	font-size: 17px;
+	margin-top: 3px;
+	margin-bottom: 4px;
+	padding-left: 4px;
+	background: @lavender;
+	color: @black;
+}
+
+/* Floating / adjust margins and font size to fit */
+#custom-spotify-icon {
+	font-size: 17px;
+	margin-top: 3px;
+	margin-bottom: 4px;
+	padding-right: 6px;
+	background-color: @green;
+    color: black;
+}
+
+#custom-spotify {
+	font-size: 17px;
+	margin-top: 3px;
+	margin-bottom: 4px;
+	padding-right: 6px;
+	background-color: @green;
+    color: black;
+}
+
+#pulseaudio {
+	background: @sound;
+	color: @text;
+}
+
+#network {
+	background: @network;
+	color: @text;
+}
+
+#memory {
+	background: @memory;
+	color: @text;
+}
+
+#cpu {
+	background: @cpu;
+	color: @text;
+}
+
+#temperature {
+	background: @temp;
+	color: @text;
+}
+
+#battery {
+	background: @battery;
+	color: @text;
+}
+
+#tray {
+	background: @tray;
+}
+
+#clock.date {
+	background: @date;
+	color: @text;
+}
+
+#clock.time {
+	background: @time;
+	color: @white;
+}
+
+/* Seperators between module elements */
+
+#custom-arrow1 {
+	color: @date;
+	background: @tray;
+}
+
+#custom-arrow2 {
+	color: @tray;
+	background: @battery;
+}
+
+#custom-arrow3 {
+	color: @battery;
+	background: @temp;
+}
+
+#custom-arrow4 {
+	color: @temp;
+	background: @cpu;
+}
+
+#custom-arrow5 {
+	color: @cpu;
+	background: @memory;
+}
+
+#custom-arrow6 {
+	color: @memory;
+	background: @network;
+}
+
+#custom-arrow7 {
+	color: @network;
+	background: @sound;
+}
+
+#custom-arrow8 {
+	color: @sound;
+	background: transparent;
+}
+
+#custom-arrow9 {
+	color: @unfocused;
+	background: transparent;
+}
+
+/* Seperator between workspaces and the corresponding arrow character */
+#custom-block {
+	color: @unfocused;
+	background: @unfocused;
+}
+
+/* Floating modules end elements / adjust font size to fit */
+
+#custom-rounded1 {
+	margin-left: 20pt;
+	font-size: 19px;
+	color: @lavender;
+	background: transparent;
+}
+
+#custom-rounded2 {
+	margin-right: 20pt;
+	font-size: 19px;
+	color: @lavender;
+	background: transparent;
+}
+
+#custom-rounded3 {
+	margin-left: 20pt;
+	font-size: 19px;
+	color: @green;
+	background: transparent;
+}
+
+#custom-rounded4 {
+	margin-right: 20pt;
+	font-size: 19px;
+	color: @green;
+	background: transparent;
+}
+
+/* Date/time seperator */
+#custom-rounded5 {
+	color: @time;
+	background: @date;
+}
